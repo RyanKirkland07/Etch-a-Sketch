@@ -13,8 +13,13 @@ function buildGrid(size){
             const gridCell = document.createElement("div");
             gridCell.style = `min-height: ${(1/size) * 100}vh; max-height: ${(1/size) * 100}vh; aspect-ratio: 1/1; margin: 0;`;
             row.append(gridCell); 
+            gridCell.addEventListener("mouseenter", hover);
         }
     }
+}
+
+function hover(event){
+    event.target.style.backgroundColor = "black";
 }
 
 buildGrid(16);
