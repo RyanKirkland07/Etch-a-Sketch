@@ -1,10 +1,16 @@
 const main = document.querySelector("body");
+const defaultRadio = document.querySelector("#default");
+const rgbRadio = document.querySelector("#rgb");
+const darkenRadio = document.querySelector("#darken");
+
+let opacity = 0;
 
 function buildGrid(size){
     let grid = document.createElement("div");
     grid.id = "grid";
     grid.style = "display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0; border: solid 2px black;";
     main.append(grid);
+    grid.addEventListener('mouseleave', leaveGrid);
 
     for(let row = 1; row <= size; row++){
         let row = document.createElement("div");
@@ -20,8 +26,20 @@ function buildGrid(size){
 }
 
 function hover(event){
-    let randColor = randomiseRGB();
-    event.target.style.backgroundColor = `rgb(${randColor[0]}, ${randColor[1]}, ${randColor[2]})`;
+    if(defaultRadio.checked){
+        event.target.style.backgroundColor = "black";
+    }
+    else if(rgbRadio.checked){
+        let randColor = randomiseRGB();
+        event.target.style.backgroundColor = `rgb(${randColor[0]}, ${randColor[1]}, ${randColor[2]})`;
+    }
+    else if(darkenRadio.checked){
+        event.target.style.backgroundColor = "black";
+        event.target.style.opacity = opacity;
+        if(opacity < 1){
+            opacity += 0.1;
+        }
+    }
 }
 
 buildGrid(16);
@@ -45,10 +63,16 @@ function newGrid(){
     infoText.textContent = "Create new grid of size:";
 }
 
+
+
 function randomiseRGB(){
     let r = Math.floor(Math.random() * 255);
     let g = Math.floor(Math.random() * 255);
     let b = Math.floor(Math.random() * 255);
 
     return new Array(r, g, b);
+}
+
+function leaveGrid(){
+    opacity = 0;
 }

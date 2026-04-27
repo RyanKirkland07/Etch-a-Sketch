@@ -14,6 +14,9 @@
         #new-grid-creation {
             justify-self: right;
         }
+        #bonuses {
+            justify-self: right;
+        }
     </style>
 </head>
 <body>
@@ -21,6 +24,14 @@
         <p id="info"> Create new grid of size: </p>
         <input type="number" id="new-size">
         <button id="confirm"> Create New Grid </button>
+    </div>
+    <div id="bonuses">
+        <input type="radio" id="default" value="default" name="color-type">
+        <label for="default"> default (all black) </label><br>
+        <input type="radio" id="rgb" value="rgb" name="color-type">
+        <label for="rgb"> random rgb </label><br>
+        <input type="radio" id="darken" value="darken" name="color-type">
+        <label for="darken"> get progressively darker </label><br>
     </div>
     <script src="etchASketch.js"></script>
 </body>
