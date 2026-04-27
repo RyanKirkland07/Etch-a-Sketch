@@ -1,5 +1,8 @@
-const grid = document.querySelector("#grid");
-grid.style = "flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0; border: solid 2px black;";
+const main = document.querySelector("body");
+
+const grid = document.createElement("div");
+grid.style = "display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0; border: solid 2px black;";
+main.append(grid);
 
 function buildGrid(size){
     for(let row = 1; row <= size; row++){
@@ -14,4 +17,4 @@ function buildGrid(size){
     }
 }
 
-buildGrid(80);
+buildGrid(16);
