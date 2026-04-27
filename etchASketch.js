@@ -20,7 +20,8 @@ function buildGrid(size){
 }
 
 function hover(event){
-    event.target.style.backgroundColor = "black";
+    let randColor = randomiseRGB();
+    event.target.style.backgroundColor = `rgb(${randColor[0]}, ${randColor[1]}, ${randColor[2]})`;
 }
 
 buildGrid(16);
@@ -42,4 +43,12 @@ function newGrid(){
     grid.remove();
     buildGrid(size);
     infoText.textContent = "Create new grid of size:";
+}
+
+function randomiseRGB(){
+    let r = Math.floor(Math.random() * 255);
+    let g = Math.floor(Math.random() * 255);
+    let b = Math.floor(Math.random() * 255);
+
+    return new Array(r, g, b);
 }
