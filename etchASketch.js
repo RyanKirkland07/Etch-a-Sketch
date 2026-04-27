@@ -1,10 +1,10 @@
 const main = document.querySelector("body");
 
-const grid = document.createElement("div");
-grid.style = "display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0; border: solid 2px black;";
-main.append(grid);
-
 function buildGrid(size){
+    let grid = document.createElement("div");
+    grid.style = "display: flex; flex-direction: column; justify-content: center; align-items: center; margin: 0; border: solid 2px black;";
+    main.append(grid);
+
     for(let row = 1; row <= size; row++){
         let row = document.createElement("div");
         row.style.display = "flex";
