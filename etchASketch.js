@@ -40,6 +40,9 @@ function hover(event){
             opacity += 0.1;
         }
     }
+    else{
+        event.target.style.backgroundColor = "black";
+    }
 }
 
 buildGrid(16);
