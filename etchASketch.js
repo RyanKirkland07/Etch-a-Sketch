@@ -40,6 +40,7 @@ function hover(event){
         opacity += 0.1;
         if(opacity > 1){
             opacity = 0;
+        }
     }
     else{
         event.target.style.backgroundColor = "black";
