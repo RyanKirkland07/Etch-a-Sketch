@@ -36,9 +36,10 @@ function hover(event){
     else if(darkenRadio.checked){
         event.target.style.backgroundColor = "black";
         event.target.style.opacity = opacity;
-        if(opacity < 1){
-            opacity += 0.1;
-        }
+
+        opacity += 0.1;
+        if(opacity > 1){
+            opacity = 0;
     }
     else{
         event.target.style.backgroundColor = "black";
