@@ -3,8 +3,7 @@ const defaultRadio = document.querySelector("#default");
 const rgbRadio = document.querySelector("#rgb");
 const darkenRadio = document.querySelector("#darken");
 
-let opacity = 0;
-
+//builds the grid
 function buildGrid(size){
     let grid = document.createElement("div");
     grid.id = "grid";
@@ -20,11 +19,14 @@ function buildGrid(size){
             const gridCell = document.createElement("div");
             gridCell.style = `min-height: ${(1/size) * 100}vh; max-height: ${(1/size) * 100}vh; aspect-ratio: 1/1; margin: 0;`;
             row.append(gridCell); 
+            gridCell.style.backgroundColor = "white";
             gridCell.addEventListener("mouseenter", hover);
         }
     }
 }
 
+//determine color of square
+let opacity = 0.1;
 function hover(event){
     if(defaultRadio.checked){
         event.target.style.backgroundColor = "black";
@@ -34,21 +36,21 @@ function hover(event){
         event.target.style.backgroundColor = `rgb(${randColor[0]}, ${randColor[1]}, ${randColor[2]})`;
     }
     else if(darkenRadio.checked){
-        event.target.style.backgroundColor = "black";
+        if(event.target.style.backgroundColor == "white"){
+            event.target.style.backgroundColor = "black";
+        }
         event.target.style.opacity = opacity;
 
         opacity += 0.1;
         if(opacity > 1){
-            opacity = 0;
+            opacity = 0.1;
         }
-    }
-    else{
-        event.target.style.backgroundColor = "black";
     }
 }
 
 buildGrid(16);
 
+// create new grid
 const confirmBtn = document.querySelector("#confirm");
 const sizeInput = document.querySelector("#new-size");
 const infoText = document.querySelector("#info");
@@ -79,5 +81,5 @@ function randomiseRGB(){
 }
 
 function leaveGrid(){
-    opacity = 0;
+    opacity = 0.1;
 }
